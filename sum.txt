@@ -1,0 +1,17 @@
+
+PART II.
+	i. sum2.c and sum3.c are 'unsafe'
+
+		In sum2.c, x, y, and z are defined as static int variables. Since they are static globals, they are shared across all threads.
+		Concurrent updates by multiple threads would result in race conditions.
+
+		In sums3.c, a static sum_t sum struct is used, where sum holds the sum, sum of squares, and sum of cubes.
+		This struct is shared across threads due to its static nature, leading to unsafe concurrent access if muliple threads call the function at the same time.
+
+	ii. sum7.c is the closest to 'call-by-name'
+		
+		In C, macros are essentially text replacements that occur at the preprocessing stage, before compilation.
+		this is conceptually similar to 'call-by-name', as the arguments passed to the macro are not evaluated beforehand but rather inserted directly into the macro's code.
+		call-by-name is not directly supported in C however, sum7.c comes closest by utilizing macros to mimic the behavior.
+
+
